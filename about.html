@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+  </title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+  <script src="about.js"></script>
+  <h1>about</h1>
+  <div class="topnav" id="myTopnav">
+    <a href="main.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="bb8.html">BB8</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+  </div>
+<?php
+//if "email" variable is filled out, send email
+  if (isset($_REQUEST['email']))  {
+  
+  //Email information
+  $admin_email = "genevievemancusojackson@students.berkeley.net";
+  $email = $_REQUEST['email'];
+  $subject = $_REQUEST['subject'];
+  $comment = $_REQUEST['comment'];
+  
+  //send email
+  mail($admin_email, "$subject", $comment, "From:" . $email);
+  
+  //Email response
+  echo "Thank you for contacting us!";
+  }
+  
+  //if "email" variable is not filled out, display the form
+  else  {
+?>
+
+ <form method="post">
+  Email: <input name="email" type="text" /><br />
+  Subject: <input name="subject" type="text" /><br />
+  Message:<br />
+  <textarea name="comment" rows="15" cols="40"></textarea><br />
+  <input type="submit" value="Submit" />
+  </form>
+  
+<?php
+  }
+?>
+</body>
+</html> 
